@@ -29,7 +29,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
         .inMemory()
-        .withClient("ClientId")
+        .withClient("123234343")
         .secret("secret")
         .authorizedGrantTypes("authorization_code")
         .scopes("user_info")

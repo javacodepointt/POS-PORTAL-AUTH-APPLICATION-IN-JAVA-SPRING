@@ -15,10 +15,19 @@ public class Oauth2Configuraton extends WebSecurityConfigurerAdapter{
 
         http.antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login**")
+                .antMatchers("/", "/login**","/auth/rest/hello/upload")
                 .permitAll()
                 .anyRequest()
-                .authenticated();
-
+                .authenticated()
+                .and()
+                .sessionManagement()
+                .maximumSessions(2)
+                .expiredUrl("/login?expired")
+                .and()
+                .invalidSessionUrl("/login")
+                .and()
+                .rememberMe().rememberMeParameter("tokenName")
+                .tokenValiditySeconds(86400);
+                		
     }
 }
