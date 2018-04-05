@@ -1,0 +1,32 @@
+server:
+  port: 8082
+  context-path: /html
+  session:
+    cookie:
+      name: UISESSION
+      
+    timeout: 30
+
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      token-name: tokenName
+      clientId: 123234343
+      clientSecret: secret
+      access-token-uri: http://localhost:8081/auth/oauth/token
+      user-authorization-uri: http://localhost:8081/auth/oauth/authorize
+      
+    resource:
+      user-info-uri: http://localhost:8081/auth/rest/hello/principal
+      #userInfoUri: http://localhost:8081/auth/rest/hello/upload
+
+
+spring:
+  thymeleaf:
+    cache: false
+    
+    
+ 

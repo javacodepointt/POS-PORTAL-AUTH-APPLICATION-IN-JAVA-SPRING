@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>POS Portal</title>
+
+</head>
+
+
+<body>
+
+	<h1>Welcome to POS Portal!</h1>
+	<span th:text="${#authentication.name}"></span>
+
+
+	<div>
+		<form method="POST" enctype="multipart/form-data"
+			action="http://localhost:8081/auth/rest/hello/upload">
+			<table>
+				<tr>
+					<td>File to upload:</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Upload" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+
+</body>
+
+</html>
