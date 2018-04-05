@@ -24,23 +24,19 @@ public class ResourceConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.antMatcher("/**").requestMatchers().antMatchers("/login", "/oauth/authorize", "/auth/rest/hello/upload").and()
-				.authorizeRequests().anyRequest()
-				.authenticated().antMatchers(HttpMethod.POST, "/auth/rest/hello/upload").hasAuthority("read")
-				.and().formLogin().loginPage("/secure.html").loginProcessingUrl("/login").permitAll().and()
-				.sessionManagement().maximumSessions(30)
-				.expiredUrl("/login?expired");
+		http.requestMatchers()
+		                .antMatchers("/login", "/oauth/authorize")
+		                .and()
+		                .authorizeRequests()
+		                .anyRequest()
+		                .authenticated()
+		                .and()
+		                .formLogin()
+		                .permitAll();
 		
 	}
 
-	/*
-	 * @Override protected void configure(AuthenticationManagerBuilder auth)
-	 * throws Exception {
-	 * 
-	 * auth.parentAuthenticationManager(authenticationManager)
-	 * .inMemoryAuthentication() .withUser("Raviverma") .password("raviverma")
-	 * .roles("USER"); }
-	 */
+	
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
